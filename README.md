@@ -1,16 +1,8 @@
 # kajtodo
 
-A new to do application.
+This is a very basic To Do application. You can add a task, update a task, delete a task. This saves the task data on your phone.
 
-## Getting Started
+![Screenshots](docs/screenshot.png)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<hr>
+<p> This is just for practicing purpose. I don't intend to publish this on app store. </p>
