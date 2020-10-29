@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kajtodo/modal/task.dart';
-import 'package:kajtodo/styling/text.dart';
+import 'package:kajtodo/styling/style.dart';
 
 List<Task> tasksList = [
   Task(taskName: 'Task 1', taskDescription: 'This is a description'),
@@ -52,8 +52,9 @@ class SingleTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(0),
       height: 100,
-      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 5),
+      margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Colors.white,
@@ -66,7 +67,7 @@ class SingleTask extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.only(left: 8, right: 8),
+        padding: EdgeInsets.only(left: 10, right: 8),
         child: Column(
           children: [
             Row(
@@ -84,20 +85,23 @@ class SingleTask extends StatelessWidget {
                     onPressed: editTask),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  taskDescription,
-                  style: kTaskDescription,
-                ),
-                IconButton(
-                    icon: Icon(
-                      Icons.check_circle,
-                      color: Color(0xFFAD83FE),
-                    ),
-                    onPressed: checkTask),
-              ],
+            Container(
+              padding: EdgeInsets.all(0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    taskDescription,
+                    style: kTaskDescription,
+                  ),
+                  IconButton(
+                      icon: Icon(
+                        Icons.check_circle,
+                        color: Color(0xFFAD83FE),
+                      ),
+                      onPressed: checkTask),
+                ],
+              ),
             )
           ],
         ),

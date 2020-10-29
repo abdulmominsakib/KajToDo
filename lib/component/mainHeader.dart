@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kajtodo/component/tasksList.dart';
-import 'package:kajtodo/styling/text.dart';
+import 'package:kajtodo/styling/style.dart';
 
 import 'taskStateCard.dart';
 
@@ -25,9 +25,12 @@ class MainHeader extends StatelessWidget {
                       'Hello, $userName',
                       style: kBigText,
                     ),
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/mypic.jpg'),
-                      radius: 30,
+                    Hero(
+                      tag: 'Avatar',
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/mypic.jpg'),
+                        radius: 30,
+                      ),
                     ),
                   ],
                 ),

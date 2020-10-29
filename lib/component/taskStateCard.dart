@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kajtodo/styling/text.dart';
+import 'package:kajtodo/styling/style.dart';
 
 class TaskStateCard extends StatelessWidget {
   final int cardNumber;
