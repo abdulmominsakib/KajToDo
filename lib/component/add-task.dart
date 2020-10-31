@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:kajtodo/modal/task.dart';
 
 class AddTask extends StatelessWidget {
+  String taskName;
+  String taskDesc;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +36,9 @@ class AddTask extends StatelessWidget {
               child: Column(
                 children: [
                   DefaultInput(
+                    onChanged: (value) {
+                      taskName = value;
+                    },
                     autofocus: true,
                     icon: Icon(
                       Icons.edit,
@@ -41,6 +51,9 @@ class AddTask extends StatelessWidget {
                     height: 20,
                   ),
                   DefaultInput(
+                    onChanged: (value) {
+                      taskDesc = value;
+                    },
                     icon: Icon(
                       Icons.description,
                       color: Colors.lightBlue,
@@ -55,6 +68,8 @@ class AddTask extends StatelessWidget {
                     elevation: 8,
                     color: Color(0xFF6C63FF),
                     onPressed: () {
+                      Provider.of<TaskData>(context, listen: false).addTask(
+                          taskName: taskName, taskDescription: taskDesc);
                       Navigator.pop(context);
                     },
                     child: Text(

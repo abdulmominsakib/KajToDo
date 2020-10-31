@@ -29,12 +29,18 @@ class DefaultInput extends StatelessWidget {
   final String hintText;
   final Icon icon;
   final bool autofocus;
+  final Function onChanged;
   DefaultInput(
-      {this.hintText, this.labelText, this.icon, this.autofocus = false});
+      {this.hintText,
+      this.labelText,
+      this.icon,
+      this.autofocus = false,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       autofocus: autofocus,
       maxLength: 30,
       cursorColor: Color(0xFFAD83FE),
