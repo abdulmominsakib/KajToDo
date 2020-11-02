@@ -13,7 +13,7 @@ class TaskStateCard extends StatelessWidget {
       color: Color(0xFFF975A1),
       elevation: 10,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
+        padding: const EdgeInsets.fromLTRB(15, 30, 15, 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

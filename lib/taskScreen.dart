@@ -11,17 +11,34 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.check),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFFAD83FE),
+        label: Text('Add a Task'),
         splashColor: Colors.blue,
-        child: Icon(Icons.add),
+        icon: Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, 'addScreen');
         },
         tooltip: 'Add Task',
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      backgroundColor: Colors.blue,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

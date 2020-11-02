@@ -77,11 +77,15 @@ class _AddTaskState extends State<AddTask> {
                     elevation: 8,
                     color: Color(0xFF6C63FF),
                     onPressed: () {
+                      // Checking if user has inputted data
                       if (taskName != null) {
+                        // Disable Keyboard Popup to avoid pixel issues
+                        FocusScope.of(context).requestFocus(new FocusNode());
                         Provider.of<TaskData>(context, listen: false).addTask(
                             taskName: taskName, taskDescription: taskDesc);
                         Navigator.pop(context);
                       } else {
+                        // No user input then Show ERROR MESSAGE
                         counterText = 'Please Add A Name';
                         setState(() {});
                       }
@@ -99,6 +103,7 @@ class _AddTaskState extends State<AddTask> {
                       elevation: 8,
                       color: Color(0xFF6C63FF),
                       onPressed: () {
+                        FocusScope.of(context).requestFocus(new FocusNode());
                         Navigator.pop(context);
                       },
                       child: Text(
