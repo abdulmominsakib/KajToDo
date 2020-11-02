@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kajtodo/modal/task.dart';
+import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
-
-List<Task> tasksList = [
-  Task(taskName: 'Task 1', taskDescription: 'This is a description'),
-  Task(taskName: 'Task 2', taskDescription: 'This is a description'),
-  Task(taskName: 'Task 3', taskDescription: 'This is a description'),
-  Task(taskName: 'Task 4', taskDescription: 'This is a description'),
-  Task(taskName: 'Task 5', taskDescription: 'This is a description'),
-];
+import 'package:provider/provider.dart';
 
 class TasksList extends StatelessWidget {
   @override
@@ -24,16 +17,25 @@ class TasksList extends StatelessWidget {
           ),
           color: Colors.white,
         ),
-        child: ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return SingleTask(
-              taskTitle: tasksList[index].taskName,
-              taskDescription: tasksList[index].taskDescription,
-              checkTask: null,
-              editTask: null,
+        child: Consumer<TaskData>(
+          builder: (context, taskData, child) {
+            return ListView.builder(
+              itemCount: taskData.tasksList.length,
+              itemBuilder: (BuildContext context, int index) {
+                var task = taskData.tasksList[index];
+
+                return SingleTask(
+                  taskTitle: task.taskName,
+                  taskDescription: task.taskDescription ?? 'No Description',
+                  checkTask: () {
+                    Provider.of<TaskData>(context, listen: false)
+                        .deleteTask(task);
+                  },
+                  editTask: null,
+                );
+              },
             );
           },
-          itemCount: tasksList.length,
         ),
       ),
     );
@@ -46,8 +48,8 @@ class SingleTask extends StatelessWidget {
 
   final String taskTitle;
   final String taskDescription;
-  Function editTask;
-  Function checkTask;
+  final Function editTask;
+  final Function checkTask;
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/provider.dart';
-import 'package:kajtodo/modal/task.dart';
+import 'package:kajtodo/modal/taskData.dart';
 
-class AddTask extends StatelessWidget {
+class AddTask extends StatefulWidget {
+  @override
+  _AddTaskState createState() => _AddTaskState();
+}
+
+class _AddTaskState extends State<AddTask> {
   String taskName;
+
   String taskDesc;
+  String counterText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +51,7 @@ class AddTask extends StatelessWidget {
                     ),
                     labelText: 'Task Name',
                     hintText: 'Enter a name',
+                    counterText: counterText,
                   ),
                   SizedBox(
                     height: 20,
@@ -60,6 +66,7 @@ class AddTask extends StatelessWidget {
                     ),
                     labelText: 'Description',
                     hintText: 'Enter a short description',
+                    counterText: '',
                   ),
                   SizedBox(
                     height: 10,
@@ -68,12 +75,28 @@ class AddTask extends StatelessWidget {
                     elevation: 8,
                     color: Color(0xFF6C63FF),
                     onPressed: () {
-                      Provider.of<TaskData>(context, listen: false).addTask(
-                          taskName: taskName, taskDescription: taskDesc);
-                      Navigator.pop(context);
+                      if (taskName != null) {
+                        Provider.of<TaskData>(context, listen: false).addTask(
+                            taskName: taskName, taskDescription: taskDesc);
+                        Navigator.pop(context);
+                      } else {
+                        counterText = 'Please Add A Name';
+                        setState(() {});
+                      }
                     },
                     child: Text(
                       'Add',
+                      style: kSubBigText,
+                    ),
+                  ),
+                  RaisedButton(
+                    elevation: 8,
+                    color: Color(0xFF6C63FF),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'Go back',
                       style: kSubBigText,
                     ),
                   )

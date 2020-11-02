@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'component/add-task.dart';
-
 import 'component/mainHeader.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -18,8 +16,7 @@ class _TaskScreenState extends State<TaskScreen> {
         splashColor: Colors.blue,
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddTask()));
+          Navigator.pushNamed(context, 'addScreen');
         },
         tooltip: 'Add Task',
       ),

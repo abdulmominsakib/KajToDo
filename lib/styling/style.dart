@@ -30,12 +30,14 @@ class DefaultInput extends StatelessWidget {
   final Icon icon;
   final bool autofocus;
   final Function onChanged;
+  final String counterText;
   DefaultInput(
       {this.hintText,
       this.labelText,
       this.icon,
       this.autofocus = false,
-      this.onChanged});
+      this.onChanged,
+      this.counterText});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class DefaultInput extends StatelessWidget {
       maxLength: 30,
       cursorColor: Color(0xFFAD83FE),
       decoration: InputDecoration(
-        counterText: '',
+        counterText: counterText,
         prefixIcon: icon,
         labelText: labelText,
         alignLabelWithHint: true,

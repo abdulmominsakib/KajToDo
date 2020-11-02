@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kajtodo/component/tasksList.dart';
+import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
+import 'package:provider/provider.dart';
 
 import 'taskStateCard.dart';
 
@@ -44,7 +46,8 @@ class MainHeader extends StatelessWidget {
                     children: [
                       TaskStateCard(
                         cardDetails: 'Total Task',
-                        cardNumber: 16,
+                        cardNumber:
+                            Provider.of<TaskData>(context).tasksList.length,
                       ),
                       SizedBox(width: 15),
                       TaskStateCard(
