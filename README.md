@@ -4,6 +4,8 @@ This is a very basic To Do application. You can add a task, update a task, delet
 
 - Swipe to delete a Task
 
+<img src="docs/KajTodo-AppLogo.png" align="right" width="250">
+
 ![Screenshots](docs/screenshot-1.png)
 ![Screenshots](docs/screenshot-2.png)
 ![Screenshots](docs/screenshot-3.png)
