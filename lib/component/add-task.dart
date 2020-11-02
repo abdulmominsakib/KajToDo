@@ -69,9 +69,11 @@ class _AddTaskState extends State<AddTask> {
                     counterText: '',
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   RaisedButton(
+                    padding: EdgeInsets.only(
+                        left: 40, right: 40, top: 10, bottom: 10),
                     elevation: 8,
                     color: Color(0xFF6C63FF),
                     onPressed: () {
@@ -89,17 +91,22 @@ class _AddTaskState extends State<AddTask> {
                       style: kSubBigText,
                     ),
                   ),
-                  RaisedButton(
-                    elevation: 8,
-                    color: Color(0xFF6C63FF),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      'Go back',
-                      style: kSubBigText,
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SingleChildScrollView(
+                    child: RaisedButton(
+                      elevation: 8,
+                      color: Color(0xFF6C63FF),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Back',
+                        style: kSubBigText,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             )

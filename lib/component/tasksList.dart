@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kajtodo/modal/task.dart';
 import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
 import 'package:provider/provider.dart';
@@ -22,16 +23,22 @@ class TasksList extends StatelessWidget {
             return ListView.builder(
               itemCount: taskData.tasksList.length,
               itemBuilder: (BuildContext context, int index) {
-                var task = taskData.tasksList[index];
-
-                return SingleTask(
-                  taskTitle: task.taskName,
-                  taskDescription: task.taskDescription ?? 'No Description',
-                  checkTask: () {
+                Task task = taskData.tasksList[index];
+                return Dismissible(
+                  key: UniqueKey(),
+                  onDismissed: (direction) {
                     Provider.of<TaskData>(context, listen: false)
                         .deleteTask(task);
                   },
-                  editTask: null,
+                  background: Container(
+                    color: Colors.redAccent,
+                  ),
+                  child: SingleTask(
+                    taskTitle: task.taskName,
+                    taskDescription: task.taskDescription ?? 'No Description',
+                    checkTask: () {},
+                    editTask: () {},
+                  ),
                 );
               },
             );
@@ -104,7 +111,7 @@ class SingleTask extends StatelessWidget {
                       onPressed: checkTask),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
