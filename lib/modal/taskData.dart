@@ -26,30 +26,6 @@ class TaskData extends ChangeNotifier {
       taskName: 'This is a Task 5',
       taskDescription: 'This is a task Description',
     ),
-    Task(
-      taskName: 'This is a Task 6',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 7',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 8',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 9',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 10',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 11',
-      taskDescription: 'This is a task Description',
-    ),
   ];
 
   List<Task> get tasksList => _tasksList;
@@ -65,8 +41,11 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateTask(Task task) {
-    // coming soon Inshallah
+  void updateTask(
+      {int taskNum, String updatedTaskName, String updatedDescription}) {
+    _tasksList[taskNum] =
+        Task(taskName: updatedTaskName, taskDescription: updatedDescription);
+    notifyListeners();
   }
 
   void deleteTask(Task task) {

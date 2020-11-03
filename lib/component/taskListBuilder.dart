@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kajtodo/component/edit-page.dart';
 import 'package:kajtodo/component/singleTask.dart';
 import 'package:kajtodo/modal/task.dart';
 import 'package:kajtodo/modal/taskData.dart';
@@ -14,6 +15,8 @@ class TaskBuilder extends StatelessWidget {
           itemCount: taskData.tasksList.length,
           itemBuilder: (BuildContext context, int index) {
             Task task = taskData.tasksList[index];
+            // Map taskIndex = taskData.tasksList.asMap();
+
             return Dismissible(
               key: UniqueKey(),
               onDismissed: (direction) {
@@ -28,7 +31,17 @@ class TaskBuilder extends StatelessWidget {
                 checkTask: () {
                   Provider.of<TaskData>(context, listen: false).doneTask(task);
                 },
-                editTask: () {},
+                editTask: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditTask(
+                        task: task,
+                        index: index,
+                      ),
+                    ),
+                  );
+                },
               ),
             );
           },

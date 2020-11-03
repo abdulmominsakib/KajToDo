@@ -31,19 +31,22 @@ class DefaultInput extends StatelessWidget {
   final bool autofocus;
   final Function onChanged;
   final String counterText;
+  final TextEditingController controller;
   DefaultInput(
       {this.hintText,
       this.labelText,
       this.icon,
       this.autofocus = false,
       this.onChanged,
-      this.counterText});
+      this.counterText,
+      this.controller});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       onChanged: onChanged,
       autofocus: autofocus,
+      controller: controller ?? null,
       maxLength: 30,
       cursorColor: Color(0xFFAD83FE),
       decoration: InputDecoration(

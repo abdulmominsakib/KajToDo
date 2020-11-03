@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kajtodo/component/add-task.dart';
+import 'package:kajtodo/component/edit-page.dart';
 import 'package:kajtodo/taskScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:kajtodo/modal/taskData.dart';
