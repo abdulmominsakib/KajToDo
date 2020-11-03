@@ -1,9 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'task.dart';
 
 class TaskData extends ChangeNotifier {
+  // Default Screen
+  bool homeIsTapped = true;
+
   List<Task> _tasksList = [
     Task(
       taskName: 'This is a Task 1',
@@ -53,10 +54,6 @@ class TaskData extends ChangeNotifier {
 
   List<Task> get tasksList => _tasksList;
 
-  // Completed Task
-
-  List<Task> completedTask = [];
-
   //  <--- Function of the Class --->
   void addTask({String taskName, String taskDescription}) {
     _tasksList.add(
@@ -68,8 +65,39 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateTask(Task task) {
+    // coming soon Inshallah
+  }
+
   void deleteTask(Task task) {
     _tasksList.remove(task);
+    notifyListeners();
+  }
+
+  void doneTask(Task task) {
+    completedTask.add(task);
+    _tasksList.remove(task);
+    notifyListeners();
+  }
+
+  // Completed Task List
+
+  List<Task> completedTask = [
+    Task(
+      taskName: 'This is a Task 11',
+      taskDescription: 'This is a task Description',
+    ),
+  ];
+
+  // Completed Task Functions
+  void deleteCompletedTask(Task task) {
+    completedTask.remove(task);
+    notifyListeners();
+  }
+
+  void notDoneTask(Task task) {
+    _tasksList.add(task);
+    completedTask.remove(task);
     notifyListeners();
   }
 }

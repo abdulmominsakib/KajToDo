@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:provider/provider.dart';
 import 'component/mainHeader.dart';
+import 'modal/taskData.dart';
 
 class TaskScreen extends StatefulWidget {
   @override
@@ -8,6 +10,30 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
+  Color colorOfList;
+  Color colorOfCheckList;
+
+  void changeColor() {
+    setState(() {
+      // Change Color Function
+      bool button = Provider.of<TaskData>(context, listen: false).homeIsTapped;
+      // Checking
+      if (button == true) {
+        colorOfList = Colors.blue;
+        colorOfCheckList = null;
+      } else {
+        colorOfCheckList = Colors.blue;
+        colorOfList = null;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    changeColor();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +44,26 @@ class _TaskScreenState extends State<TaskScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {},
+              icon: Icon(
+                Icons.list_alt_outlined,
+                color: colorOfList,
+              ),
+              onPressed: () {
+                Provider.of<TaskData>(context, listen: false).homeIsTapped =
+                    true;
+                changeColor();
+              },
             ),
             IconButton(
-              icon: Icon(Icons.check),
-              onPressed: () {},
+              icon: Icon(
+                Icons.check_box_outlined,
+                color: colorOfCheckList,
+              ),
+              onPressed: () {
+                Provider.of<TaskData>(context, listen: false).homeIsTapped =
+                    false;
+                changeColor();
+              },
             ),
           ],
         ),

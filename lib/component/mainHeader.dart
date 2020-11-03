@@ -52,7 +52,8 @@ class MainHeader extends StatelessWidget {
                       SizedBox(width: 15),
                       TaskStateCard(
                         cardDetails: 'Completed',
-                        cardNumber: 8,
+                        cardNumber:
+                            Provider.of<TaskData>(context).completedTask.length,
                       ),
                     ],
                   ),
