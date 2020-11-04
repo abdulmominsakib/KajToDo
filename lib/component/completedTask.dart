@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kajtodo/component/completedSingleTask.dart';
 import 'package:kajtodo/modal/task.dart';
 import 'package:kajtodo/modal/taskData.dart';
+import 'package:kajtodo/styling/style.dart';
 import 'package:provider/provider.dart';
 
 class CompletedTaskList extends StatelessWidget {
@@ -19,10 +20,10 @@ class CompletedTaskList extends StatelessWidget {
               onDismissed: (direction) {
                 Provider.of<TaskData>(context, listen: false)
                     .deleteCompletedTask(task);
+                Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text("Task Deleted")));
               },
-              background: Container(
-                color: Colors.redAccent,
-              ),
+              background: DismissableBackground(),
               child: CompletedSingleTask(
                 taskTitle: task.taskName,
                 taskDescription: task.taskDescription ?? 'No Description',

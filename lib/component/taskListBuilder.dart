@@ -4,6 +4,7 @@ import 'package:kajtodo/component/edit-page.dart';
 import 'package:kajtodo/component/singleTask.dart';
 import 'package:kajtodo/modal/task.dart';
 import 'package:kajtodo/modal/taskData.dart';
+import 'package:kajtodo/styling/style.dart';
 import 'package:provider/provider.dart';
 
 class TaskBuilder extends StatelessWidget {
@@ -15,16 +16,15 @@ class TaskBuilder extends StatelessWidget {
           itemCount: taskData.tasksList.length,
           itemBuilder: (BuildContext context, int index) {
             Task task = taskData.tasksList[index];
-            // Map taskIndex = taskData.tasksList.asMap();
 
             return Dismissible(
               key: UniqueKey(),
               onDismissed: (direction) {
                 Provider.of<TaskData>(context, listen: false).deleteTask(task);
+                Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text("Task Deleted")));
               },
-              background: Container(
-                color: Colors.redAccent,
-              ),
+              background: DismissableBackground(),
               child: SingleTask(
                 taskTitle: task.taskName,
                 taskDescription: task.taskDescription ?? 'No Description',
@@ -36,7 +36,9 @@ class TaskBuilder extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => EditTask(
+                        // for passing task data to edit screen
                         task: task,
+                        // It will pass the current index (int) to next Screen
                         index: index,
                       ),
                     ),
