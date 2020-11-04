@@ -19,7 +19,7 @@ class CompletedTaskList extends StatelessWidget {
               key: UniqueKey(),
               onDismissed: (direction) {
                 Provider.of<TaskData>(context, listen: false)
-                    .deleteCompletedTask(task);
+                    .deleteCompletedTask(index, task);
                 Scaffold.of(context)
                     .showSnackBar(SnackBar(content: Text("Task Deleted")));
               },
@@ -29,11 +29,11 @@ class CompletedTaskList extends StatelessWidget {
                 taskDescription: task.taskDescription ?? 'No Description',
                 addToList: () {
                   Provider.of<TaskData>(context, listen: false)
-                      .notDoneTask(task);
+                      .notDoneTask(index, task);
                 },
                 deleteTask: () {
                   Provider.of<TaskData>(context, listen: false)
-                      .deleteCompletedTask(task);
+                      .deleteCompletedTask(index, task);
                 },
               ),
             );

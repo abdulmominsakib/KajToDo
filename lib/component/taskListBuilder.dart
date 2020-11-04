@@ -20,7 +20,8 @@ class TaskBuilder extends StatelessWidget {
             return Dismissible(
               key: UniqueKey(),
               onDismissed: (direction) {
-                Provider.of<TaskData>(context, listen: false).deleteTask(task);
+                Provider.of<TaskData>(context, listen: false)
+                    .deleteTask(index, task);
                 Scaffold.of(context).showSnackBar(SnackBar(
                   content: Row(children: [
                     Icon(Icons.delete),
@@ -36,7 +37,8 @@ class TaskBuilder extends StatelessWidget {
                 taskTitle: task.taskName,
                 taskDescription: task.taskDescription ?? 'No Description',
                 checkTask: () {
-                  Provider.of<TaskData>(context, listen: false).doneTask(task);
+                  Provider.of<TaskData>(context, listen: false)
+                      .doneTask(task, index);
                 },
                 editTask: () {
                   Navigator.push(
