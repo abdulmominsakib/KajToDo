@@ -1,77 +1,129 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'task.dart';
 
 class TaskData extends ChangeNotifier {
-  // Default Screen
+// <---  Main Task List Database Function --->
+  static dataBaseInitialize() {
+    Box<Task> taskBox = Hive.box<Task>('TaskList');
+    return taskBox;
+  }
+
+  Box taskBox = dataBaseInitialize();
+
+  // This function is also used to refresh the State or UI
+  addToList() {
+    tasksList = taskBox.values.toList();
+  }
+
+  removeFromList(index) {
+    taskBox.deleteAt(index);
+  }
+
+// <--- End Main Task Screen Databases Functions--->
+
+// <------->
+
+// <--- Start Completed Task Databases Functions --->
+
+  static completeTaskList() {
+    Box<Task> completedBox = Hive.box<Task>('Completed');
+    return completedBox;
+  }
+
+  Box compledtedBox = completeTaskList();
+
+  // This function is also used to refresh the State or UI
+  addToCompletedList() {
+    completedTask = compledtedBox.values.toList();
+  }
+
+  removeFromCompletedList(index) {
+    compledtedBox.deleteAt(index);
+  }
+
+// <--- End Completed Task Databases Functions --->
+
+// <------->
+
+  // Default Screen Selected to TaskScreen
   bool homeIsTapped = true;
 
-  List<Task> _tasksList = [
-    Task(
-      taskName: 'This is a Task 1',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 2',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 3',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 4',
-      taskDescription: 'This is a task Description',
-    ),
-    Task(
-      taskName: 'This is a Task 5',
-      taskDescription: 'This is a task Description',
-    ),
-  ];
+  List<Task> tasksList = [];
 
-  List<Task> get tasksList => _tasksList;
+// <--- Start TaskList Task Functions --->
+// CRUD Operations Functions
 
-  //  <--- Function of the Class --->
+  // CREATE
   void addTask({String taskName, String taskDescription}) {
-    _tasksList.add(
-      Task(
-        taskName: taskName,
-        taskDescription: taskDescription,
-      ),
-    );
+    taskBox.add(Task(taskName: taskName, taskDescription: taskDescription));
+    // Refreshes UI
+    addToList();
+    // NOTIFY ALL THE LISTENERS
     notifyListeners();
   }
 
+  // UPDATE
   void updateTask(
       {int taskNum, String updatedTaskName, String updatedDescription}) {
-    _tasksList[taskNum] =
-        Task(taskName: updatedTaskName, taskDescription: updatedDescription);
+    taskBox.putAt(taskNum,
+        Task(taskName: updatedTaskName, taskDescription: updatedDescription));
+    /* TaskNum is coming from the LIST which selects and updates specific 
+    SELECTED TASK from the database and UI,
+    addToList() update the STATE
+     */
+    addToList();
     notifyListeners();
   }
 
-  void deleteTask(Task task) {
-    _tasksList.remove(task);
+  // DELETE
+  void deleteTask(int index, Task task) {
+    // First remove from the UI LIST
+    tasksList.remove(task);
+    // Then remove from the Database
+    // IF it done oppposite then it will not work.
+    // because it stays in the database.
+    removeFromList(index);
     notifyListeners();
   }
 
-  void doneTask(Task task) {
+  // DONE
+  void doneTask(Task task, int index) {
+    // First Add this to the Completed Screen
     completedTask.add(task);
-    _tasksList.remove(task);
+    compledtedBox.add(task);
+    // Then remove it from the TaskScreen
+    tasksList.remove(task);
+    removeFromList(index);
     notifyListeners();
   }
 
-  // Completed Task List
+// <--- End TaskList Task Functions --->
+
+// <-------->
+
+// <--- Completed TaskList --->
 
   List<Task> completedTask = [];
 
-  // Completed Task Functions
-  void deleteCompletedTask(Task task) {
+  // <--- Start Completed Task Functions --->
+  // DELETE FUNCTION
+  void deleteCompletedTask(int index, Task task) {
+    // Remove from the Screen
     completedTask.remove(task);
+    // Remove from the database
+    removeFromCompletedList(index);
     notifyListeners();
   }
 
-  void notDoneTask(Task task) {
-    _tasksList.add(task);
+  // ADD to the TaskList
+  void notDoneTask(int index, Task task) {
+    // Add to the TaskList
+    tasksList.add(task);
+    taskBox.add(task);
+    // Remove from the completed TaskList
     completedTask.remove(task);
+    removeFromCompletedList(index);
     notifyListeners();
   }
 }

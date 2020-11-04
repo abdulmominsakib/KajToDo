@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'component/mainHeader.dart';
 import 'modal/taskData.dart';
@@ -32,6 +33,8 @@ class _TaskScreenState extends State<TaskScreen> {
   void initState() {
     super.initState();
     changeColor();
+    Provider.of<TaskData>(context, listen: false).addToList();
+    Provider.of<TaskData>(context, listen: false).addToCompletedList();
   }
 
   @override

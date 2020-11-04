@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:kajtodo/component/add-task.dart';
 import 'package:kajtodo/taskScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:kajtodo/modal/taskData.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'modal/task.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(TaskAdapter());
+  await Hive.openBox<Task>('TaskList');
+  await Hive.openBox<Task>('Completed');
   runApp(TaskApp());
 }
 
@@ -14,6 +23,11 @@ class TaskApp extends StatefulWidget {
 }
 
 class _TaskAppState extends State<TaskApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
