@@ -27,13 +27,13 @@ class _AddTaskState extends State<AddTask> {
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 alignment: Alignment.topRight,
-                child: Hero(
-                  tag: 'Avatar',
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/mypic.jpg'),
-                    radius: 30,
-                  ),
-                ),
+                // child: Hero(
+                //   tag: 'Avatar',
+                //   child: CircleAvatar(
+                //     backgroundImage: AssetImage('assets/mypic.jpg'),
+                //     radius: 30,
+                //   ),
+                // ),
               ),
             ),
             Expanded(

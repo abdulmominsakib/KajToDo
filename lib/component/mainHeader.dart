@@ -27,13 +27,13 @@ class MainHeader extends StatelessWidget {
                       'Hello, $userName',
                       style: kBigText,
                     ),
-                    Hero(
-                      tag: 'Avatar',
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/mypic.jpg'),
-                        radius: 30,
-                      ),
-                    ),
+                    // Hero(
+                    //   tag: 'Avatar',
+                    //   child: CircleAvatar(
+                    //     backgroundImage: AssetImage('assets/mypic.jpg'),
+                    //     radius: 30,
+                    //   ),
+                    // ),
                   ],
                 ),
                 Text(

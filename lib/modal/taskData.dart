@@ -61,12 +61,7 @@ class TaskData extends ChangeNotifier {
 
   // Completed Task List
 
-  List<Task> completedTask = [
-    Task(
-      taskName: 'This is a Task 11',
-      taskDescription: 'This is a task Description',
-    ),
-  ];
+  List<Task> completedTask = [];
 
   // Completed Task Functions
   void deleteCompletedTask(Task task) {

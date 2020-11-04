@@ -85,17 +85,6 @@ class DismissableBackground extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            padding: EdgeInsets.only(left: 20),
-            alignment: Alignment.centerLeft,
-            color: Colors.redAccent,
-            child: Icon(
-              Icons.delete,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        Expanded(
-          child: Container(
             padding: EdgeInsets.only(right: 20),
             alignment: Alignment.centerRight,
             color: Colors.redAccent,
@@ -104,7 +93,7 @@ class DismissableBackground extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-        )
+        ),
       ],
     );
   }

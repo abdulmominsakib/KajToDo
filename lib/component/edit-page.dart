@@ -41,13 +41,6 @@ class _EditTaskState extends State<EditTask> {
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 alignment: Alignment.topRight,
-                child: Hero(
-                  tag: 'Avatar',
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/mypic.jpg'),
-                    radius: 30,
-                  ),
-                ),
               ),
             ),
             Expanded(

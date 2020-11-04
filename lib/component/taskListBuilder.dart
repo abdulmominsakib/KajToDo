@@ -21,8 +21,15 @@ class TaskBuilder extends StatelessWidget {
               key: UniqueKey(),
               onDismissed: (direction) {
                 Provider.of<TaskData>(context, listen: false).deleteTask(task);
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text("Task Deleted")));
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Row(children: [
+                    Icon(Icons.delete),
+                    SizedBox(width: 10),
+                    Text('Task Deleted'),
+                  ]),
+                  backgroundColor: Colors.redAccent,
+                  duration: Duration(milliseconds: 70),
+                ));
               },
               background: DismissableBackground(),
               child: SingleTask(
