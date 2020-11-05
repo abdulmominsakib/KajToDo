@@ -8,10 +8,10 @@ This is a very basic To Do application. You can add a task, update a task, delet
 - Swipe to delete a Task
 - Long Press to edit a Task
 
-<img src="docs/screen1.png" align="left" width="200">
-<img src="docs/screen2.png" align="left" width="200">
-<img src="docs/screen3.png" align="right" width="200">
-<img src="docs/screen4.png" align="right" width="200">
+<img src="docs/screen1.png" align="center" >
+<img src="docs/screen2.png" align="center">
+<img src="docs/screen3.png" align="center">
+<img src="docs/screen4.png" align="center">
 
 ## Packages I used on this app
 - Provider - Great for state management. (Recommonded by Flutter)
