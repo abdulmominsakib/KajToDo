@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kajtodo/component/edit-page.dart';
-import 'package:kajtodo/component/singleTask.dart';
+import 'package:kajtodo/component/sharedComponent/edit-page.dart';
+import 'package:kajtodo/component/listingTask/singleTask.dart';
 import 'package:kajtodo/modal/task.dart';
 import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kajtodo/component/tasksList.dart';
+import 'package:kajtodo/component/listingTask/tasksList.dart';
 import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
 import 'package:provider/provider.dart';

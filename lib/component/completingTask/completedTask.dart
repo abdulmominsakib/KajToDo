@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kajtodo/component/completedSingleTask.dart';
+import 'package:kajtodo/component/completingTask/completedSingleTask.dart';
 import 'package:kajtodo/modal/task.dart';
 import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';

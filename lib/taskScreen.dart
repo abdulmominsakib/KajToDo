@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'component/mainHeader.dart';
+import 'component/sharedComponent/mainHeader.dart';
 import 'modal/taskData.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -32,7 +31,9 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   void initState() {
     super.initState();
+    // It will change the color of clickedButton
     changeColor();
+    // Add the task to the list from database
     Provider.of<TaskData>(context, listen: false).addToList();
     Provider.of<TaskData>(context, listen: false).addToCompletedList();
   }
@@ -52,6 +53,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 color: colorOfList,
               ),
               onPressed: () {
+                // The taskscreen button is tapped
                 Provider.of<TaskData>(context, listen: false).homeIsTapped =
                     true;
                 changeColor();
@@ -63,6 +65,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 color: colorOfCheckList,
               ),
               onPressed: () {
+                // theCompletedTaskScreen button is clicked
                 Provider.of<TaskData>(context, listen: false).homeIsTapped =
                     false;
                 changeColor();

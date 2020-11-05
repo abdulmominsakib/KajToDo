@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:kajtodo/modal/taskData.dart';
 
 class EditTask extends StatefulWidget {
+  // Get the datafrom taskScreen
+  // index is required so that we can check which task to edit
   final Task task;
   final int index;
 
@@ -15,6 +17,7 @@ class EditTask extends StatefulWidget {
 }
 
 class _EditTaskState extends State<EditTask> {
+  // All the required variables for this page
   TextEditingController nameController;
   TextEditingController descController;
   String taskName;
@@ -68,6 +71,13 @@ class _EditTaskState extends State<EditTask> {
                     child: DefaultInput(
                       controller: descController,
                       onChanged: (value) {
+                        /* taskname is added because if user has inputted 
+                        nothing on the taskname then it will return null value
+                        to the String variable, because it is not triggered,
+                        but if user clicked on the description then it will
+                        trigger the onchanged so it will add the the value of 
+                        text controller to here!0
+                         */
                         taskName = nameController.text;
                         taskDesc = value;
                       },
@@ -91,7 +101,8 @@ class _EditTaskState extends State<EditTask> {
                     onPressed: () {
                       // Checking if user has inputted data
                       if (taskName != null) {
-                        // Disable Keyboard Popup to avoid pixel issues
+                        // Disable Keyboard Popup to avoid pixel issues on
+                        // the next ScreenBuild
                         FocusScope.of(context).requestFocus(new FocusNode());
 
                         Provider.of<TaskData>(context, listen: false)

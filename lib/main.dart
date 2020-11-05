@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:kajtodo/component/add-task.dart';
+import 'package:kajtodo/component/addingTask/add-task.dart';
 import 'package:kajtodo/taskScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:kajtodo/modal/taskData.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'modal/task.dart';
 
 void main() async {
@@ -15,6 +14,8 @@ void main() async {
   await Hive.openBox<Task>('TaskList');
   await Hive.openBox<Task>('Completed');
   runApp(TaskApp());
+  // it will create two Box, one for tasklist and other for completed tasklist
+  // WidgetsFLutterBInding is required otherwise it will not work.
 }
 
 class TaskApp extends StatefulWidget {

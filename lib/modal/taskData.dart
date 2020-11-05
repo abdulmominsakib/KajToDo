@@ -123,6 +123,10 @@ class TaskData extends ChangeNotifier {
     taskBox.add(task);
     // Remove from the completed TaskList
     completedTask.remove(task);
+    /*  <--- You cannot delete by "Task" modal, it will not delete it from 
+      database,That's why it is added as index. And the 
+      removeFromCompletedList() will take the index and delete it from 
+      database. ---> */
     removeFromCompletedList(index);
     notifyListeners();
   }

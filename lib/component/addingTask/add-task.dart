@@ -27,6 +27,7 @@ class _AddTaskState extends State<AddTask> {
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 alignment: Alignment.topRight,
+                // <--- You Can Add A profile Picture Here --->
                 // child: Hero(
                 //   tag: 'Avatar',
                 //   child: CircleAvatar(
@@ -71,6 +72,7 @@ class _AddTaskState extends State<AddTask> {
                   SizedBox(
                     height: 20,
                   ),
+                  // <--- Add Button --->
                   RaisedButton(
                     padding: EdgeInsets.only(
                         left: 40, right: 40, top: 10, bottom: 10),
