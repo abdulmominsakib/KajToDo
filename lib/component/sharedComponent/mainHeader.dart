@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'taskStateCard.dart';
 
-String userName = 'Momin';
+String userName = '';
 
 class MainHeader extends StatelessWidget {
   @override
