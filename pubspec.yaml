@@ -15,7 +15,8 @@ dependencies:
   cupertino_icons: ^1.0.0
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
-  # shared_preferences: ^0.5.12+4
+  introduction_screen: ^1.0.7
+  
 
 dev_dependencies:
   flutter_test:

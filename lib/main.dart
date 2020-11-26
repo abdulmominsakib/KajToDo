@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:kajtodo/component/addingTask/add-task.dart';
+import 'package:kajtodo/introductionScreen.dart';
 import 'package:kajtodo/taskScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:kajtodo/modal/taskData.dart';
@@ -35,8 +36,10 @@ class _TaskAppState extends State<TaskApp> {
       create: (context) => TaskData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        initialRoute: '/',
         routes: {
-          '/': (context) => TaskScreen(),
+          '/': (context) => Intro(),
+          'taskScreen': (context) => TaskScreen(),
           'addScreen': (context) => AddTask(),
         },
         theme: ThemeData(
