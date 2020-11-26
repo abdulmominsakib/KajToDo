@@ -9,12 +9,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'modal/task.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter());
   await Hive.openBox<Task>('TaskList');
   await Hive.openBox<Task>('Completed');
+  await Hive.openBox<String>('AllString');
+  await Hive.openBox<bool>('AllBool');
+
   runApp(TaskApp());
+
   // it will create two Box, one for tasklist and other for completed tasklist
   // WidgetsFLutterBInding is required otherwise it will not work.
 }
@@ -24,6 +27,8 @@ class TaskApp extends StatefulWidget {
   _TaskAppState createState() => _TaskAppState();
 }
 
+Box boolOfApp = Hive.box<bool>('AllBool');
+
 class _TaskAppState extends State<TaskApp> {
   @override
   void initState() {
@@ -32,14 +37,14 @@ class _TaskAppState extends State<TaskApp> {
 
   @override
   Widget build(BuildContext context) {
+    int firstBool = boolOfApp.values.length;
     return ChangeNotifierProvider(
       create: (context) => TaskData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => Intro(),
-          'taskScreen': (context) => TaskScreen(),
+          '/': (context) => firstBool == 0 ? Intro() : TaskScreen(),
           'addScreen': (context) => AddTask(),
         },
         theme: ThemeData(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kajtodo/styling/style.dart';
+import 'package:kajtodo/taskScreen.dart';
 
 class Intro extends StatefulWidget {
   const Intro({Key key}) : super(key: key);
@@ -13,11 +15,13 @@ class Intro extends StatefulWidget {
 class _IntroState extends State<Intro> {
   @override
   Widget build(BuildContext context) {
+    Box nameOfAdmin = Hive.box<String>('AllString');
+    Box boolOfApp = Hive.box<bool>('AllBool');
+    String counterText = '';
+
     final pageDecoration = PageDecoration(
       contentPadding: EdgeInsets.only(top: 50, bottom: 50),
     );
-
-    List<String> featureList = ['Track Your Task'];
 
     TextEditingController nameInputController = TextEditingController();
 
@@ -33,7 +37,7 @@ class _IntroState extends State<Intro> {
         title: '',
         image: Center(child: Image.asset('assets/intro-image-2.png')),
         bodyWidget:
-            Text(''' -Track Your Task \n  -Check Your Task \n -Do your Task'''),
+            Text('''- Track Your Task\n- Check Your Task\n- Do your Task'''),
         footer: Text('Manage Your Task More easily'),
         // body: 'Track your Task',
       ),
@@ -42,7 +46,7 @@ class _IntroState extends State<Intro> {
         image: Image.asset('assets/intro-image-3.png'),
         bodyWidget: DefaultInput(
           hintText: 'Add your name',
-          counterText: '',
+          counterText: counterText,
           controller: nameInputController,
         ),
         footer: Text('So that we can call you by your name'),
@@ -55,7 +59,22 @@ class _IntroState extends State<Intro> {
         globalBackgroundColor: Colors.white,
         pages: introPagesView,
         done: Text('Done'),
-        onDone: () {},
+        onDone: () {
+          String nameadmin = nameInputController.value.text;
+
+          if (nameadmin == null) {
+            counterText = 'Please Add a name';
+          }
+          if (nameadmin != null) {
+            nameOfAdmin.add(nameadmin);
+            boolOfApp.add(true);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TaskScreen()),
+            );
+          }
+          print(nameadmin);
+        },
       ),
     ));
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:kajtodo/component/listingTask/tasksList.dart';
 import 'package:kajtodo/modal/taskData.dart';
 import 'package:kajtodo/styling/style.dart';
@@ -6,7 +7,9 @@ import 'package:provider/provider.dart';
 
 import 'taskStateCard.dart';
 
-String userName = '';
+Box nameOfAdmin = Hive.box<String>('AllString');
+
+String userName = nameOfAdmin.values.first;
 
 class MainHeader extends StatelessWidget {
   @override
