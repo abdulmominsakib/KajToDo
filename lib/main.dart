@@ -37,7 +37,8 @@ class _TaskAppState extends State<TaskApp> {
 
   @override
   Widget build(BuildContext context) {
-    int firstBool = boolOfApp.values.length;
+    // int firstBool = boolOfApp.values.length;
+    int firstBool = 0;
     return ChangeNotifierProvider(
       create: (context) => TaskData(),
       child: MaterialApp(

@@ -76,6 +76,30 @@ class DefaultInput extends StatelessWidget {
 }
 
 // Task Delete Background
+class CompletedBackground extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.only(right: 20),
+            alignment: Alignment.centerRight,
+            color: Colors.green,
+            child: Icon(
+              Icons.check,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// Task Delete Background
 class DismissableBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

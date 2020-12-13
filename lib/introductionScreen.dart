@@ -64,15 +64,13 @@ class _IntroState extends State<Intro> {
 
           if (nameadmin == null) {
             counterText = 'Please Add a name';
-          }
-          if (nameadmin != null) {
+          } else
             nameOfAdmin.add(nameadmin);
-            boolOfApp.add(true);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TaskScreen()),
-            );
-          }
+          boolOfApp.add(true);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TaskScreen()),
+          );
           print(nameadmin);
         },
       ),

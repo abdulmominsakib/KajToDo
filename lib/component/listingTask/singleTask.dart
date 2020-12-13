@@ -30,8 +30,9 @@ class SingleTask extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.only(left: 10, right: 8),
+          padding: EdgeInsets.all(5),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,31 +41,31 @@ class SingleTask extends StatelessWidget {
                     taskTitle,
                     style: kTaskTitle,
                   ),
-                  IconButton(
-                      icon: Icon(
-                        Icons.edit_location_outlined,
-                        color: Color(0xFF6C63FF),
-                      ),
-                      onPressed: editTask),
+                  Icon(
+                    Icons.edit_location_outlined,
+                    color: Color(0xFF6C63FF),
+                  ),
                 ],
               ),
-              Container(
-                padding: EdgeInsets.all(0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      taskDescription,
-                      style: kTaskDescription,
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    taskDescription,
+                    style: kTaskDescription,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      'Medium',
+                      style: TextStyle(color: Colors.white, fontSize: 10),
                     ),
-                    IconButton(
-                        icon: Icon(
-                          Icons.check_circle,
-                          color: Color(0xFFAD83FE),
-                        ),
-                        onPressed: checkTask),
-                  ],
-                ),
+                  )
+                ],
               ),
             ],
           ),
